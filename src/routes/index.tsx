@@ -3,7 +3,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import StackRoutes from './stackRoutes';
 
 import {Image, StyleSheet, View} from 'react-native';
-
 import Register from '../screens/register';
 import Playlist from '../screens/playlist';
 
@@ -24,6 +23,11 @@ export function Routes() {
         tabBarStyle: {
           backgroundColor: '#177ABD',
           borderTopWidth: 0,
+          elevation: 0, // Removemos a sombra do TabNavigator
+          position: 'absolute', // Definimos a posição como absoluta para permitir a sobreposição
+          bottom: 0,
+          left: 0,
+          right: 0,
           height: 72,
         },
       }}>
@@ -34,20 +38,18 @@ export function Routes() {
           tabBarIcon: ({focused}) => (
             <View
               style={{
-                width: 50,
-                height: 50,
+                width: focused ? 60 : 50,
+                height: focused ? 60 : 50,
                 padding: 20,
                 borderRadius: 50,
                 backgroundColor: focused ? '#0D4970' : '#fff',
                 justifyContent: 'center',
                 alignItems: 'center',
+                position: 'absolute',
+                bottom: focused ? 26 : 13,
               }}>
               <Image
-                source={
-                  focused
-                    ? require('../assets/img/playlist.png')
-                    : require('../assets/img/playlist.png')
-                }
+                source={require('../assets/img/playlist.png')}
                 style={{
                   width: 30,
                   height: 30,
@@ -65,20 +67,18 @@ export function Routes() {
           tabBarIcon: ({focused}) => (
             <View
               style={{
-                width: 50,
-                height: 50,
+                width: focused ? 60 : 50,
+                height: focused ? 60 : 50,
                 padding: 20,
                 borderRadius: 50,
                 backgroundColor: focused ? '#0D4970' : '#fff',
                 justifyContent: 'center',
                 alignItems: 'center',
+                position: 'absolute',
+                bottom: focused ? 26 : 13,
               }}>
               <Image
-                source={
-                  focused
-                    ? require('../assets/img/house.png')
-                    : require('../assets/img/house.png')
-                }
+                source={require('../assets/img/house.png')}
                 style={{
                   width: 30,
                   height: 30,
@@ -96,20 +96,18 @@ export function Routes() {
           tabBarIcon: ({focused}) => (
             <View
               style={{
-                width: 50,
-                height: 50,
+                width: focused ? 60 : 50,
+                height: focused ? 60 : 50,
                 padding: 20,
                 borderRadius: 50,
                 backgroundColor: focused ? '#0D4970' : '#fff',
                 justifyContent: 'center',
                 alignItems: 'center',
+                position: 'absolute',
+                bottom: focused ? 26 : 13,
               }}>
               <Image
-                source={
-                  focused
-                    ? require('../assets/img/add.png')
-                    : require('../assets/img/add.png')
-                }
+                source={require('../assets/img/add.png')}
                 style={{
                   width: 30,
                   height: 30,
