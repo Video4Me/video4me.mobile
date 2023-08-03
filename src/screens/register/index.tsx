@@ -1,40 +1,18 @@
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  Image,
-  View,
-  TouchableOpacity,
-  Modal,
-  FlatList,
-} from 'react-native';
+import {StyleSheet, Text, Image, View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import Header from '../../components/Header';
 import Form from './components/Form';
 import InputForm from './components/Input';
 
-import {videoCategories} from '../../utils/videoCategories';
+import SelectForm from './components/Select';
 
 const Register = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [videoUrl, setVIideoUrl] = useState('');
 
-  const [modalVisible, setModalVisible] = useState(false);
-
   const [showSecondForm, setShowSecondForm] = useState(false);
 
   const handleSave = () => {};
-
-  const renderCategoryOption = ({item}: any) => (
-    <TouchableOpacity
-      style={styles.optionItem}
-      onPress={() => {
-        setSelectedCategory(item.value);
-        setModalVisible(false);
-      }}>
-      <Text>{item.label}</Text>
-    </TouchableOpacity>
-  );
 
   return (
     <View style={styles.container}>
@@ -48,33 +26,7 @@ const Register = () => {
               placeholder="Insira a URL do Youtube"
               onChange={text => setVIideoUrl(text)}
             />
-            <TouchableOpacity
-              style={styles.input}
-              onPress={() => setModalVisible(true)}>
-              <Text style={styles.select}>
-                {selectedCategory || 'Selecione uma categoria'}
-              </Text>
-              <Image source={require('../../assets/img/Arrow.png')} />
-            </TouchableOpacity>
-            <Modal
-              animationType="fade"
-              transparent={true}
-              visible={modalVisible}
-              onRequestClose={() => setModalVisible(false)}>
-              <TouchableOpacity
-                style={styles.modalContainer}
-                activeOpacity={1}
-                onPress={() => setModalVisible(false)}>
-                <View style={styles.modalContent}>
-                  <FlatList
-                    style={{width: '100%'}}
-                    data={videoCategories}
-                    renderItem={renderCategoryOption}
-                    keyExtractor={item => item.value}
-                  />
-                </View>
-              </TouchableOpacity>
-            </Modal>
+            <SelectForm category={selectedCategory} />
             <TouchableOpacity
               onPress={() => setShowSecondForm(!showSecondForm)}>
               <Image
@@ -139,43 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#fff',
   },
-  input: {
-    backgroundColor: '#66BAF20D',
-    borderTopLeftRadius: 4,
-    borderTopRightRadius: 4,
-    padding: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: '#66BAF2',
-    color: '#333333',
-    fontSize: 14,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    width: '100%',
-  },
-  select: {
-    fontSize: 16,
-  },
-  modalContainer: {
-    position: 'absolute',
-    top: 35,
-    right: 0,
-    left: 0,
-    bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalContent: {
-    backgroundColor: '#C2DCEC',
-    borderRadius: 4,
-    width: '85%',
-    height: '45%',
-    overflow: 'hidden',
-    color: '#000',
-  },
-  optionItem: {
-    padding: 20,
-    backgroundColor: '#C2DCEC',
-  },
+
   plus: {
     alignSelf: 'flex-end',
     marginVertical: 8,
