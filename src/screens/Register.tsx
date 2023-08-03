@@ -1,10 +1,10 @@
 import {StyleSheet, Text, Image, View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
-import Header from '../../components/Header';
-import Form from './components/Form';
-import InputForm from './components/Input';
+import Header from '../components/Header';
 
-import SelectForm from './components/Select';
+import Form from './register/components/Form';
+import InputForm from './register/components/Input';
+import SelectForm from './register/components/Select';
 
 const Register = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -26,12 +26,15 @@ const Register = () => {
               placeholder="Insira a URL do Youtube"
               onChange={text => setVIideoUrl(text)}
             />
-            <SelectForm category={selectedCategory} />
+            <SelectForm
+              category={selectedCategory}
+              onSelectCategory={category => setSelectedCategory(category)}
+            />
             <TouchableOpacity
               onPress={() => setShowSecondForm(!showSecondForm)}>
               <Image
                 style={styles.plus}
-                source={require('../../assets/img/plus.png')}
+                source={require('../assets/img/plus.png')}
               />
             </TouchableOpacity>
           </Form>
@@ -45,7 +48,7 @@ const Register = () => {
               <TouchableOpacity>
                 <Image
                   style={styles.trash}
-                  source={require('../../assets/img/trash.png')}
+                  source={require('../assets/img/trash.png')}
                 />
               </TouchableOpacity>
             </Form>

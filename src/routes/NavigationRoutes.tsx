@@ -1,19 +1,18 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 //Pages
-import Home from '../screens/home';
-import Register from '../screens/register';
-import Playlist from '../screens/playlist';
-import EmptyState from '../modules/EmptyState/screens';
+import Home from '../screens/Home';
+import Register from '../screens/Register';
+import Playlist from '../screens/Playlist';
 
 const Stack = createNativeStackNavigator();
 
-export default function StackRoutes() {
+export default function NavigationRoutes() {
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="Home"
-        component={EmptyState}
+        component={Home}
         options={{headerShown: false}}
       />
       <Stack.Screen
