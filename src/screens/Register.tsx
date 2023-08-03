@@ -9,7 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 import React, {useState} from 'react';
-import Header from '../../components/Header';
+import Header from '../components/Header';
 
 const Register = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -59,7 +59,7 @@ const Register = () => {
             <Text style={styles.select}>
               {selectedCategory || 'Selecione uma categoria'}
             </Text>
-            <Image source={require('../../assets/img/Arrow.png')} />
+            <Image source={require('../assets/img/Arrow.png')} />
           </TouchableOpacity>
           <Modal
             animationType="fade"
@@ -82,7 +82,7 @@ const Register = () => {
           </Modal>
           <Image
             style={styles.plus}
-            source={require('../../assets/img/plus.png')}
+            source={require('../assets/img/plus.png')}
           />
         </View>
         <TouchableOpacity style={styles.button} onPress={handleSave}>
