@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '../screens/home';
 import Register from '../screens/register';
 import Playlist from '../screens/playlist';
+import EmptyState from '../modules/EmptyState/screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,7 +13,7 @@ export default function StackRoutes() {
     <Stack.Navigator>
       <Stack.Screen
         name="Home"
-        component={Home}
+        component={EmptyState}
         options={{headerShown: false}}
       />
       <Stack.Screen

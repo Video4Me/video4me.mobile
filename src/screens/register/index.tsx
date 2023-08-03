@@ -10,25 +10,31 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import Header from '../../components/Header';
+import Form from './components/Form';
+import InputForm from './components/Input';
 
 const Register = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [videoUrl, setVIideoUrl] = useState('');
+
   const [modalVisible, setModalVisible] = useState(false);
+
+  const [showSecondForm, setShowSecondForm] = useState(false);
 
   const handleSave = () => {};
 
   const videoCategories = [
-    {label: 'Arte', value: 'arte'},
-    {label: 'Decoração', value: 'decoracao'},
-    {label: 'Entretenimento', value: 'entretenimento'},
-    {label: 'Filmes', value: 'filmes'},
-    {label: 'Moda', value: 'moda'},
-    {label: 'Receitas', value: 'receitas'},
-    {label: 'Viagens', value: 'viagens'},
-    {label: 'Estudos', value: 'estudos'},
-    {label: 'Esportes', value: 'esportes'},
-    {label: 'Comédia', value: 'comedia'},
-    {label: 'Tecnologia', value: 'tecnologia'},
+    {label: 'Arte', value: 'Arte'},
+    {label: 'Decoração', value: 'Decoracao'},
+    {label: 'Entretenimento', value: 'Entretenimento'},
+    {label: 'Filmes', value: 'Filmes'},
+    {label: 'Moda', value: 'Moda'},
+    {label: 'Receitas', value: 'Receitas'},
+    {label: 'Viagens', value: 'Viagens'},
+    {label: 'Estudos', value: 'Estudos'},
+    {label: 'Esportes', value: 'Esportes'},
+    {label: 'Comédia', value: 'Comedia'},
+    {label: 'Tecnologia', value: 'Tecnologia'},
   ];
 
   const renderCategoryOption = ({item}: any) => (
@@ -48,46 +54,66 @@ const Register = () => {
       <View style={styles.content}>
         <Text style={styles.title}>ADICIONAR CANAL</Text>
 
-        <View style={styles.form}>
-          <TextInput
-            style={styles.input}
-            placeholder="Insira a URL do Youtube"
-          />
-          <TouchableOpacity
-            style={styles.input}
-            onPress={() => setModalVisible(true)}>
-            <Text style={styles.select}>
-              {selectedCategory || 'Selecione uma categoria'}
-            </Text>
-            <Image source={require('../../assets/img/Arrow.png')} />
-          </TouchableOpacity>
-          <Modal
-            animationType="fade"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => setModalVisible(false)}>
+        <View>
+          <Form>
+            <InputForm
+              placeholder="Insira a URL do Youtube"
+              onChange={text => setVIideoUrl(text)}
+            />
             <TouchableOpacity
-              style={styles.modalContainer}
-              activeOpacity={1} // Evitar toque acidental fora do Modal
-              onPress={() => setModalVisible(false)}>
-              <View style={styles.modalContent}>
-                <FlatList
-                  style={{width: '100%'}} // Ajuste da largura
-                  data={videoCategories}
-                  renderItem={renderCategoryOption}
-                  keyExtractor={item => item.value}
-                />
-              </View>
+              style={styles.input}
+              onPress={() => setModalVisible(true)}>
+              <Text style={styles.select}>
+                {selectedCategory || 'Selecione uma categoria'}
+              </Text>
+              <Image source={require('../../assets/img/Arrow.png')} />
             </TouchableOpacity>
-          </Modal>
-          <Image
-            style={styles.plus}
-            source={require('../../assets/img/plus.png')}
-          />
+            <Modal
+              animationType="fade"
+              transparent={true}
+              visible={modalVisible}
+              onRequestClose={() => setModalVisible(false)}>
+              <TouchableOpacity
+                style={styles.modalContainer}
+                activeOpacity={1}
+                onPress={() => setModalVisible(false)}>
+                <View style={styles.modalContent}>
+                  <FlatList
+                    style={{width: '100%'}}
+                    data={videoCategories}
+                    renderItem={renderCategoryOption}
+                    keyExtractor={item => item.value}
+                  />
+                </View>
+              </TouchableOpacity>
+            </Modal>
+            <TouchableOpacity
+              onPress={() => setShowSecondForm(!showSecondForm)}>
+              <Image
+                style={styles.plus}
+                source={require('../../assets/img/plus.png')}
+              />
+            </TouchableOpacity>
+          </Form>
+          {showSecondForm && (
+            <Form>
+              <InputForm placeholder="URL do Vídeo" value={videoUrl} />
+              <InputForm
+                placeholder="Categoria do Vídeo"
+                value={selectedCategory}
+              />
+              <TouchableOpacity>
+                <Image
+                  style={styles.trash}
+                  source={require('../../assets/img/trash.png')}
+                />
+              </TouchableOpacity>
+            </Form>
+          )}
+          <TouchableOpacity style={styles.button} onPress={handleSave}>
+            <Text style={styles.textButton}>Salvar</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.button} onPress={handleSave}>
-          <Text style={styles.textButton}>Salvar</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -107,15 +133,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000',
     marginBottom: 12,
+    paddingVertical: 10,
   },
   form: {
     borderWidth: 1,
     borderColor: '#00000033',
     borderRadius: 4,
-    padding: 4,
+    padding: 8,
     gap: 10,
     position: 'relative',
-    marginBottom: 120,
+    marginBottom: 20,
   },
   button: {
     backgroundColor: '#1D9BF0',
@@ -126,6 +153,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 10,
     alignSelf: 'flex-end',
+    marginTop: 100,
   },
   textButton: {
     fontSize: 14,
@@ -149,7 +177,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     position: 'absolute',
-    top: 0,
+    top: 35,
     right: 0,
     left: 0,
     bottom: 0,
@@ -171,5 +199,11 @@ const styles = StyleSheet.create({
   plus: {
     alignSelf: 'flex-end',
     marginVertical: 8,
+  },
+  trash: {
+    alignSelf: 'flex-end',
+    marginVertical: 8,
+    width: 40,
+    height: 40,
   },
 });
