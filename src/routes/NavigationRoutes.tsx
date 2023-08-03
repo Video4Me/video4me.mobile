@@ -1,13 +1,15 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-//Pages
-import Home from '../screens/home';
-import Register from '../screens/register';
-import Playlist from '../screens/playlist';
+//components
+import Home from '../screens/Home';
+
+//Screens
+import Register from '../screens/Register';
+import Playlist from '../screens/Playlist';
 
 const Stack = createNativeStackNavigator();
 
-export default function StackRoutes() {
+export default function NavigationRoutes() {
   return (
     <Stack.Navigator>
       <Stack.Screen

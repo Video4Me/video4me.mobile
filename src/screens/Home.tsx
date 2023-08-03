@@ -1,27 +1,25 @@
-// React Native Counter Example using Hooks!
+import React from 'react';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import Header from '../components/Header';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import React, {useState} from 'react';
-import {View, Text, Button, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import Header from '../../../components/Header';
+const Tab = createNativeStackNavigator();
 
-export default function EmptyState(){
-
-
-return (
+export default function Home() {
+  return (
     <>
-    <Header />
-    <View style={styles.container}>
-        <Text style={styles.title}>VOCÊ NÃO TEM NENHUM CANAL DE VÍDEO CADASTRADO</Text>
+      <Header />
+      <View style={styles.container}>
+        <Text style={styles.title}>
+          VOCÊ NÃO TEM NENHUM CANAL DE VÍDEO CADASTRADO
+        </Text>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.textButton}>Cadastrar Canal</Text>
+          <Text style={styles.textButton}>Adicionar vídeos</Text>
         </TouchableOpacity>
-    </View>
-
+      </View>
     </>
-  
   );
-};
-
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -58,5 +56,3 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
 });
-
-

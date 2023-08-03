@@ -1,8 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {Text, View} from 'react-native';
 
-import {Routes} from './src/routes';
+import {Routes} from './src/routes/Routes';
 
 const App = () => {
   return (
