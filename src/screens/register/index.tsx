@@ -13,6 +13,8 @@ import Header from '../../components/Header';
 import Form from './components/Form';
 import InputForm from './components/Input';
 
+import {videoCategories} from '../../utils/videoCategories';
+
 const Register = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [videoUrl, setVIideoUrl] = useState('');
@@ -22,20 +24,6 @@ const Register = () => {
   const [showSecondForm, setShowSecondForm] = useState(false);
 
   const handleSave = () => {};
-
-  const videoCategories = [
-    {label: 'Arte', value: 'Arte'},
-    {label: 'Decoração', value: 'Decoracao'},
-    {label: 'Entretenimento', value: 'Entretenimento'},
-    {label: 'Filmes', value: 'Filmes'},
-    {label: 'Moda', value: 'Moda'},
-    {label: 'Receitas', value: 'Receitas'},
-    {label: 'Viagens', value: 'Viagens'},
-    {label: 'Estudos', value: 'Estudos'},
-    {label: 'Esportes', value: 'Esportes'},
-    {label: 'Comédia', value: 'Comedia'},
-    {label: 'Tecnologia', value: 'Tecnologia'},
-  ];
 
   const renderCategoryOption = ({item}: any) => (
     <TouchableOpacity
@@ -135,15 +123,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     paddingVertical: 10,
   },
-  form: {
-    borderWidth: 1,
-    borderColor: '#00000033',
-    borderRadius: 4,
-    padding: 8,
-    gap: 10,
-    position: 'relative',
-    marginBottom: 20,
-  },
+
   button: {
     backgroundColor: '#1D9BF0',
     width: 155,
