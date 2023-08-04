@@ -5,15 +5,17 @@ interface FormProps {
   placeholder: string;
   onChange?: (text: string) => void;
   value?: string;
+  disabled: boolean;
 }
 
-const InputForm = ({placeholder, onChange, value}: FormProps) => {
+const InputForm = ({placeholder, onChange, value, disabled}: FormProps) => {
   return (
     <TextInput
       style={styles.input}
       placeholder={placeholder}
       onChangeText={onChange}
       value={value}
+      editable={!disabled}
     />
   );
 };

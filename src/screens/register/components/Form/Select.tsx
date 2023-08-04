@@ -14,15 +14,17 @@ import {videoCategories} from '../../../../utils/videoCategories';
 interface SelectProps {
   category: string;
   onSelectCategory: (category: string) => void;
+  disabled: boolean;
 }
 
-const SelectForm = ({category, onSelectCategory}: SelectProps) => {
+const SelectForm = ({category, onSelectCategory, disabled}: SelectProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const renderCategoryOption = ({item}: any) => (
     <TouchableOpacity
       style={styles.optionItem}
+      disabled={disabled}
       onPress={() => {
         onSelectCategory(item.value); // Atualiza a categoria selecionada no componente pai
         setModalVisible(false);
