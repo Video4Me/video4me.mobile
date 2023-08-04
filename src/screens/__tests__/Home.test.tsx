@@ -1,6 +1,6 @@
 import {it} from '@jest/globals';
 
-import Home from '../Home';
+import Home from '../home';
 
 import renderer from 'react-test-renderer';
 

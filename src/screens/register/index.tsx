@@ -1,10 +1,10 @@
 import {StyleSheet, Text, Image, View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
-import Form from './register/components/Form';
-import InputForm from './register/components/Input';
-import SelectForm from './register/components/Select';
+import Form from './components/Form/Form';
+import InputForm from './components/Form/Input';
+import SelectForm from './components/Form/Select';
 
 const Register = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -34,7 +34,7 @@ const Register = () => {
               onPress={() => setShowSecondForm(!showSecondForm)}>
               <Image
                 style={styles.plus}
-                source={require('../assets/img/plus.png')}
+                source={require('../../assets/img/plus.png')}
               />
             </TouchableOpacity>
           </Form>
@@ -48,7 +48,7 @@ const Register = () => {
               <TouchableOpacity>
                 <Image
                   style={styles.trash}
-                  source={require('../assets/img/trash.png')}
+                  source={require('../../assets/img/trash.png')}
                 />
               </TouchableOpacity>
             </Form>

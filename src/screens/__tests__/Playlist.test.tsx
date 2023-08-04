@@ -1,6 +1,6 @@
 import {it} from '@jest/globals';
 
-import Playlist from '../Playlist';
+import Playlist from '../playlist';
 
 import renderer from 'react-test-renderer';
 

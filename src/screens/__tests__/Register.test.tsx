@@ -1,6 +1,6 @@
 import {it} from '@jest/globals';
 
-import Register from '../Register';
+import Register from '../register';
 
 import renderer from 'react-test-renderer';
 
