@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import Header from '../../components/Header';
+import Header from '../components/Header/Header';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Tab = createNativeStackNavigator();

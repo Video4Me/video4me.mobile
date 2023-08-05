@@ -1,9 +1,9 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 //Pages
-import Home from '../screens/home';
-import Register from '../screens/register';
-import Playlist from '../screens/playlist';
+import Home from '../screens/Home';
+import Register from '../screens/Register';
+import Playlist from '../screens/PlayList';
 
 const Stack = createNativeStackNavigator();
 

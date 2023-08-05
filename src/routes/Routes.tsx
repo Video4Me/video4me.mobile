@@ -4,8 +4,8 @@ import StackRoutes from './NavigationRoutes';
 
 import {Image, StyleSheet, View} from 'react-native';
 
-import Register from '../screens/register';
-import Playlist from '../screens/playlist';
+import Register from '../screens/Register';
+import Playlist from '../screens/PlayList';
 
 const Tab = createBottomTabNavigator();
 
