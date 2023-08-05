@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 
-import {videoCategories} from '../../../../utils/videoCategories';
+import {videoCategories} from '../../utils/videoCategories';
 
 interface SelectProps {
   category: string;
@@ -40,7 +40,7 @@ const SelectForm = ({category, onSelectCategory, disabled}: SelectProps) => {
         <Text style={styles.select}>
           {category || 'Selecione uma categoria'}
         </Text>
-        <Image source={require('../../../../assets/img/Arrow.png')} />
+        <Image source={require('../../assets/img/Arrow.png')} />
       </TouchableOpacity>
       <Modal
         animationType="fade"
